@@ -25,9 +25,9 @@
                 "
               >
                 <img
-                  src="http://localhost:8080/images/aprlogoputih.png"
-                  alt=""
-                />
+                  img src="../../../../public/images/aprlogoputih.png">
+                  
+               
               </div>
               
               <br />
@@ -120,7 +120,7 @@
 
                   <img
                     class="is-rounded"
-                    src="http://localhost:8080/images/aaa.png"
+                    src="../../../../public/images/aaa.png"
                     width="260"
                     alt="Placeholder image"
                   />
@@ -136,7 +136,7 @@
                     <figure class="image is-48x48">
                       <img
                         class="is-rounded"
-                        src="http://localhost:8080/images/img_avatar2.png"
+                        src="../../../../public/images/img_avatar2.png"
                         width="48"
                         height="48"
                         alt="Placeholder image"
