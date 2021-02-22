@@ -136,7 +136,7 @@
                     <figure class="image is-48x48">
                       <img
                         class="is-rounded"
-                        src="http://localhost:8080/images/img_avatar2.png"
+                        src="../../../../public/images/img_avatar2.png"
                         width="48"
                         height="48"
                         alt="Placeholder image"
