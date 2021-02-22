@@ -1,0 +1,7 @@
+<template>
+  <AprBaseLayout>
+    <router-view></router-view>
+  </AprBaseLayout>
+</template>
+
+<script src="./customer.js"></script>

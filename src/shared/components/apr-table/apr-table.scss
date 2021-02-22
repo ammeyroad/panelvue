@@ -1,0 +1,11 @@
+.Table {
+  th,
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  &--responsive {
+    overflow-x: auto;
+  }
+}

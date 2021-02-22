@@ -1,0 +1,10 @@
+.UsersListLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 148px);
+
+  &-body {
+    flex-grow: 1;
+    margin: 1.5rem 0;
+  }
+}
