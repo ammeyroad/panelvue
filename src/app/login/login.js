@@ -33,7 +33,7 @@ export default {
     const router = root.$router;
     const { apiInvoker } = useApiInvoker();
 
-    const backgroundImage = ref("./images/login-background.jpg");
+    const backgroundImage = ref("../../../public/images/");
     const logo = ref("./images/logo.png");
     const password = ref("");
     const username = ref("");

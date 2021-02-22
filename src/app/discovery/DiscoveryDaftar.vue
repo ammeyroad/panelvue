@@ -4,7 +4,7 @@
     <div class="level">
       <div class="level-left">
         <p class="title is-5 has-text-link">
-           Discovery
+          Discovery
           <br />
           <small class="subtitle is-6 has-text-link">
             Daftar Discovery Terbaru
@@ -130,7 +130,6 @@
                   </button>
                   <button
                     class="button is-small is-danger is-light"
-                    
                     type="button"
                     @click.prevent="trashModal(props.row)"
                   >
@@ -152,6 +151,12 @@
 
             <form @submit.prevent="add" class="p-4">
               <!--upload gamvar -->
+              <div class="form-group">
+                <label for="exampleInput">Image</label>
+                <input type="file" class="form-control" @change="GetImage" />
+                <img :src="avatar" class="w-25" />
+              </div>
+
               <b-field grouped>
                 <b-field>
                   <template #label>
@@ -180,7 +185,7 @@
 
               <!--estimasi modal dan taggal -->
               <b-field grouped>
-                <b-field >
+                <b-field>
                   <template #label>
                     <small class="has-text-link">Jenis</small>
                   </template>
@@ -286,7 +291,6 @@
                     </b-checkbox-button>
                   </b-field>
                 </b-field>
-                
               </b-field>
               <br />
               <!--kategori dan tag -->
@@ -387,7 +391,6 @@
               <b-tag type="is-success" rounded>
                 {{ selected.jenis_ide }}
               </b-tag>
-             
             </b-taglist>
             <p class="title is-4">
               {{ selected.nama_ide }}
@@ -415,228 +418,228 @@
 <script>
 export default {
   data() {
-  const data = [
-  {
-    id_ide: "1",
-    nama_ide:
-      "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
-    sub_nama_ide:
-      "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Makanan",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/92c952",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Dinda Kanya",
-    kontak_mentor: "0822-2333-22123",
-  },
-  {
-    id_ide: "2",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Minuman",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/24f355",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Kevin Moses",
-    kontak_mentor: "0822-322-22123",
-  },
-  {
-    id_ide: "3",
-    nama_ide:
-      "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
-    sub_nama_ide:
-      "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Barang",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/24f355",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Dinda Kanya",
-    kontak_mentor: "0822-2333-22123",
-  },
-  {
-    id_ide: "4",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Minuman",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/92c952",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Kevin Moses",
-    kontak_mentor: "0822-322-22123",
-  },
-  {
-    id_ide: "5",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Makanan",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/24f355",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Dinda Kanya",
-    kontak_mentor: "0822-2333-22123",
-  },
-  {
-    id_ide: "6",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Barang",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/9c184f",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Kevin Moses",
-    kontak_mentor: "0822-322-22123",
-  },
-  {
-    id_ide: "7",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Makanan",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/56a8c2",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Dinda Kanya",
-    kontak_mentor: "0822-2333-22123",
-  },
-  {
-    id_ide: "8",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Minuman",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/24f355",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Kevin Moses",
-    kontak_mentor: "0822-322-22123",
-  },
-  {
-    id_ide: "9",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Barang",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/9c184f",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Kevin Moses",
-    kontak_mentor: "0822-322-22123",
-  },
-  {
-    id_ide: "10",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Minuman",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/56a8c2",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Dinda Kanya",
-    kontak_mentor: "0822-2333-22123",
-  },
-  {
-    id_ide: "11",
-    nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    sub_nama_ide:
-      "officia delectus consequatur vero aut veniam explicabo molestias",
-    modal_ide: "1000",
-    kategori_ide: "10 Juta",
-    jenis_ide: "Minuman",
-    promosi_ide: ["Halamandepan", "Sliderkategori"],
-    deskripsi_ide:
-      "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    tanggal_listing_ide: "1970-01-01",
-    tanggal_update_ide: "1970-01-01",
-    gambar_ide: "https://via.placeholder.com/600/9c184f",
-    gambar_thumb_ide: "",
-    id_user_upload_ide: "1",
-    nama_mentor: "Kevin Moses",
-    kontak_mentor: "0822-322-22123",
-  },
-];
+    const data = [
+      {
+        id_ide: "1",
+        nama_ide:
+          "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
+        sub_nama_ide:
+          "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Makanan",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/92c952",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Dinda Kanya",
+        kontak_mentor: "0822-2333-22123",
+      },
+      {
+        id_ide: "2",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Minuman",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/24f355",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Kevin Moses",
+        kontak_mentor: "0822-322-22123",
+      },
+      {
+        id_ide: "3",
+        nama_ide:
+          "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
+        sub_nama_ide:
+          "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Barang",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/24f355",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Dinda Kanya",
+        kontak_mentor: "0822-2333-22123",
+      },
+      {
+        id_ide: "4",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Minuman",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/92c952",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Kevin Moses",
+        kontak_mentor: "0822-322-22123",
+      },
+      {
+        id_ide: "5",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Makanan",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/24f355",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Dinda Kanya",
+        kontak_mentor: "0822-2333-22123",
+      },
+      {
+        id_ide: "6",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Barang",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/9c184f",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Kevin Moses",
+        kontak_mentor: "0822-322-22123",
+      },
+      {
+        id_ide: "7",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Makanan",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/56a8c2",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Dinda Kanya",
+        kontak_mentor: "0822-2333-22123",
+      },
+      {
+        id_ide: "8",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Minuman",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/24f355",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Kevin Moses",
+        kontak_mentor: "0822-322-22123",
+      },
+      {
+        id_ide: "9",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Barang",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic coremque ipsam iure nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/9c184f",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Kevin Moses",
+        kontak_mentor: "0822-322-22123",
+      },
+      {
+        id_ide: "10",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Minuman",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/56a8c2",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Dinda Kanya",
+        kontak_mentor: "0822-2333-22123",
+      },
+      {
+        id_ide: "11",
+        nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        sub_nama_ide:
+          "officia delectus consequatur vero aut veniam explicabo molestias",
+        modal_ide: "1000",
+        kategori_ide: "10 Juta",
+        jenis_ide: "Minuman",
+        promosi_ide: ["Halamandepan", "Sliderkategori"],
+        deskripsi_ide:
+          "ullam et saepe reiciendis voluptatem adipisci nsit amet autem assumenda provident rerum culpa nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+        tanggal_listing_ide: "1970-01-01",
+        tanggal_update_ide: "1970-01-01",
+        gambar_ide: "https://via.placeholder.com/600/9c184f",
+        gambar_thumb_ide: "",
+        id_user_upload_ide: "1",
+        nama_mentor: "Kevin Moses",
+        kontak_mentor: "0822-322-22123",
+      },
+    ];
     return {
       activeTab: 0,
       data,
@@ -658,6 +661,16 @@ export default {
       id_user_upload_ide: "1",
       searchable: false,
     };
+  },
+  methods: {
+    GetImage(e) {
+      let image = e.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = e => {
+        this.avatar = e.target.result;
+      };
+    },
   },
 };
 </script>

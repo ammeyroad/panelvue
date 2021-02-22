@@ -26,7 +26,7 @@
 
     <div class="columns">
       <div class="column mr-4">
-        <div class="box is-shadowless " style="border-radius: 10px">
+        <div class="box is-shadowless" style="border-radius: 10px">
           <form @submit.prevent="add" class="p-4">
             <!--upload gamvar -->
             <b-field grouped>
@@ -47,19 +47,37 @@
 
             <b-field>
               <template #label>
-                <small class="has-text-link">Gambar</small>
+                <small class="has-text-link">Gambar Ide Bisnis</small>
               </template>
-              <b-upload v-model="gambar_ide" expanded>
-                <a class="button is-primary is-fullwidth is-large">
-                  <b-icon icon="upload"></b-icon>
-                  <span>{{ gambar_ide.name || "Click to upload" }}</span>
-                </a>
-              </b-upload>
+
+              <div class="file is-boxed is-link is-fullwidth">
+                <label class="file-label">
+                  <input
+                    class="file-input form-control"
+                    type="file"
+                    @change="GetImage"
+                  />
+                  <span class="file-cta">
+                    <span class="file-icon m-2">
+                      <i class="fas fa-upload"></i>
+                      <span class="pl-4">
+                        upload gambar (jpg.png)
+                        <br />
+                      </span>
+                      <br />
+                    </span>
+                    <span class="file-label"></span>
+                  </span>
+                  <span class="file-name">
+                    {{ gambar_ide.name || "ukuran terbaik 600x800" }}
+                  </span>
+                </label>
+              </div>
             </b-field>
 
             <!--estimasi modal dan taggal -->
             <b-field grouped>
-              <b-field >
+              <b-field>
                 <template #label>
                   <small class="has-text-link">Kategori</small>
                 </template>
@@ -70,8 +88,8 @@
                   expanded
                 >
                   <option value="Promo">Promo</option>
-                    <option value="Tutorial">Tutorial</option>
-                    <option value="FAQ">FAQ</option>
+                  <option value="Tutorial">Tutorial</option>
+                  <option value="FAQ">FAQ</option>
                 </b-select>
               </b-field>
             </b-field>
@@ -225,8 +243,8 @@
                 <img
                   style="border-radius: 10px 10px 0px 0px"
                   :src="
-                    gambar_ides
-                      ? gambar_ides
+                    gambar_ide
+                      ? gambar_ide
                       : 'https://bulma.io/images/placeholders/128x128.png'
                   "
                   :alt="gambar_ide.name"
@@ -299,12 +317,21 @@ export default {
       tanggal_ide: new Date(),
       tanggal_listing_ide: "1970-01-01",
       tanggal_update_ide: "12-11-2020",
-      gambar_ide: {},
+      gambar_ide: "",
       gambar_thumb_ide: "",
       id_user_upload_ide: "1",
     };
   },
-
+  methods: {
+    GetImage(e) {
+      let image = e.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = e => {
+        this.gambar_ide = e.target.result;
+      };
+    },
+  },
   setup() {
     const { user } = useState(["user"]);
 

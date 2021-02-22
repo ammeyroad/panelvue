@@ -45,18 +45,35 @@
               <b-field expanded type="is-light"></b-field>
             </b-field>
 
-            <b-field>
+             <b-field>
               <template #label>
-                <small class="has-text-link">Gambar</small>
+                <small class="has-text-link">Gambar Ide Bisnis</small>
               </template>
-              <b-upload v-model="gambar_ide" expanded>
-                <a class="button is-primary is-fullwidth is-large">
-                  <b-icon icon="upload"></b-icon>
-                  <span>{{ gambar_ide.name || "Click to upload" }}</span>
-                </a>
-              </b-upload>
-            </b-field>
 
+              <div class="file is-boxed is-link is-fullwidth">
+                <label class="file-label">
+                  <input
+                    class="file-input form-control"
+                    type="file"
+                    @change="GetImage"
+                  />
+                  <span class="file-cta">
+                    <span class="file-icon m-2">
+                      <i class="fas fa-upload"></i>
+                      <span class="pl-4">
+                        upload gambar (jpg.png)
+                        <br />
+                      </span>
+                      <br />
+                    </span>
+                    <span class="file-label"></span>
+                  </span>
+                  <span class="file-name">
+                    {{ gambar_ide.name || "ukuran terbaik 600x800" }}
+                  </span>
+                </label>
+              </div>
+            </b-field>
             <!--estimasi modal dan taggal -->
             <b-field grouped>
               <b-field expanded>
@@ -306,8 +323,8 @@
                 <img
                   style="border-radius: 10px 10px 0px 0px"
                   :src="
-                    gambar_ides
-                      ? gambar_ides
+                    gambar_ide
+                      ? gambar_ide
                       : 'https://bulma.io/images/placeholders/128x128.png'
                   "
                   :alt="gambar_ide.name"
@@ -398,14 +415,23 @@ export default {
       tanggal_ide: new Date(),
       tanggal_listing_ide: null,
       tanggal_update_ide: null,
-      gambar_ide: {},
+      gambar_ide: "",
       gambar_thumb_ide: null,
       id_user_upload_ide: null,
       nama_mentor: null,
       kontak_mentor: null,
     };
   },
-
+   methods: {
+    GetImage(e) {
+      let image = e.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = e => {
+        this.gambar_ide = e.target.result;
+      };
+    },
+  },
   setup() {
     const { user } = useState(["user"]);
 

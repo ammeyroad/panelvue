@@ -491,7 +491,7 @@
             <section>
               <img  
                 style="border-radius: 10px 10px 10px 10px"
-                src="http://localhost:8080/images/img_avatar2.png" width="60px"
+                src="../../../public/images/img_avatar2.png" width="60px"
                 alt="nama_ide"
               />
             </section>

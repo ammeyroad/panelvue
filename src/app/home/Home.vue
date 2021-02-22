@@ -7,7 +7,7 @@
             <figure class="image is-128x128 m-4" style="border: 2px">
               <img
                 class="is-rounded"
-                src="http://localhost:8080/images/img_avatar2.png"
+                src="../../../public/images/img_avatar2.png"
                 width="248"
                 height="248"
                 alt="Placeholder image"
