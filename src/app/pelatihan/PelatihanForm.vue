@@ -294,10 +294,10 @@
             <hr />
 
             <div class="buttons">
-              <b-button
+               <b-button
                 tag="router-link"
                 icon-left="plus"
-                to="/tambah"
+                to="/pelatihandaftar"
                 type="is-link"
               >
                 SUBMIT
@@ -305,7 +305,7 @@
               <b-button
                 tag="router-link"
                 icon-left="delete"
-                to="/daftar"
+                to="/pelatihandaftar"
                 type="is-danger"
                 outlined
               >

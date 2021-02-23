@@ -1,8 +1,6 @@
 <template>
-  <div class=" table
-          is-hoverable">
-    <table class=" table
-          is-hoverable is-striped">
+  <div class="Table Table--responsive">
+    <table class="table is-fullwidth is-bordered is-striped">
       <thead>
         <slot name="header"></slot>
       </thead>

@@ -1,139 +1,283 @@
 <template>
-
-  <div>
-    <div class="sidenav" style="padding: 15px">
-      <b-image src="http://localhost:8080/images/logo.png"></b-image>
-      <hr
-        style="
-          height: 1px;
-          border-width: 0;
-          color: blue;
-          background-color: blue;
-        "
-      />
-
-      <b-menu has-text-light>
-        <b-menu-list label="">
-          <apr-navbar />
-          <b-menu-list label="">
-           
-            <b-menu-item icon="view-dashboard" label="HOME"></b-menu-item>
-          </b-menu-list>
-
-          <b-menu-item
-            icon="lamp"
-            :active="isActive"
-            expanded
-            style="
-                  color: #fff;
-                  font-color: #fff:
-                  font-weight: bold;
-                  border-radius: 6px;
+  <div class="sidebar-page has-background-light">
+    <section class="sidebar-layout">
+      <aside class="hero has-background-white is-fullheight">
+        <div class="sticky" style="border-radius: 10px">
+          <b-sidebar
+            position="static"
+            expand-on-hover
+            :reduce="reduce"
+            type="is-white"
+            open
+          >
+            <div
+              class="p-0"
+              style="
+                border-radius: 0px 0px 10px 10px;
+                border: 0px solid #234dba;
+              "
+            >
+              <div
+                style="
+                  border-radius: 0px 0px 10px 0px;
+                  background-color: #234dba;
+                  padding: 10px;
                 "
-          >
-            <template #label="props">
-              IDE BISNIS
-              <b-icon
-                class="is-pulled-right"
-                :icon="props.expanded ? 'menu-down' : 'menu-right'"
-              ></b-icon>
-            </template>
-            <b-menu-item icon="account" label="Ide Bisnis"></b-menu-item>
-            <b-menu-item icon="cash-multiple" label="Tambah Ide"></b-menu-item>
-          </b-menu-item>
+              >
+                <img img src="../../../../public/images/aprlogoputih.png" />
+              </div>
 
-          <b-menu-item icon="speedometer" :active="isActive" expanded>
-            <template #label="props">
-              PELATIHAN
-              <b-icon
-                class="is-pulled-right"
-                :icon="props.expanded ? 'menu-down' : 'menu-right'"
-              ></b-icon>
-            </template>
-            <b-menu-item icon="apps" label="Dafar"></b-menu-item>
-            <b-menu-item icon="plus" label="Tambah"></b-menu-item>
-          </b-menu-item>
-          <b-menu-item icon="cellphone-link" :active="isActive" expanded>
-            <template #label="props">
-              BERITA
-              <b-icon
-                class="is-pulled-right"
-                :icon="props.expanded ? 'menu-down' : 'menu-right'"
-              ></b-icon>
-            </template>
-            <b-menu-item icon="account" label="List Berita"></b-menu-item>
-            <b-menu-item icon="cash-multiple" label="Tambah"></b-menu-item>
-          </b-menu-item>
-        </b-menu-list>
-        <hr
-          style="
-            height: 1px;
-            border-width: 0;
-            color: blue;
-            background-color: blue;
-          "
-        />
-        <b-menu-list label="">
-          <b-button icon="account" type="is-light" expanded>Keluar</b-button>
-        </b-menu-list>
-      </b-menu>
-    </div>
+              <br />
+              <b-menu class="subtitle is-5 has-text-link" style="padding: 15px">
+                <b-menu-list>
+                  <b-menu-item
+                    tag="router-link"
+                    to="/home"
+                    pack="uil"
+                    icon="home"
+                    label="Beranda"
+                  ></b-menu-item>
+                </b-menu-list>
+                <hr />
+                <b-menu-list>
+                  <b-menu-item icon="lamp" label="Ide Bisnis">
+                    <b-menu-item
+                      tag="router-link"
+                      to="/idedaftar"
+                      pack="uil"
+                      icon="table"
+                      label="Daftar"
+                    ></b-menu-item>
+                    <b-menu-item
+                      tag="router-link"
+                      to="/ideform"
+                      icon="plus"
+                      label="Tambah"
+                    ></b-menu-item>
+                  </b-menu-item>
+                </b-menu-list>
+                <b-menu-list>
+                  <b-menu-item icon="pen" label="Pelatihan">
+                    <b-menu-item
+                      tag="router-link"
+                      to="/pelatihandaftar"
+                      pack="uil"
+                      icon="table"
+                      label="Daftar"
+                    ></b-menu-item>
+                    <b-menu-item
+                      tag="router-link"
+                      to="/pelatihanform"
+                      icon="plus"
+                      label="Tambah"
+                    ></b-menu-item>
+                  </b-menu-item>
+                </b-menu-list>
+                <b-menu-list>
+                  <b-menu-item icon="book" label="Artikel">
+                    <b-menu-item
+                      tag="router-link"
+                      to="/discoverydaftar"
+                      pack="uil"
+                      icon="table"
+                      label="Daftar"
+                    ></b-menu-item>
+                    <b-menu-item
+                      tag="router-link"
+                      to="/discoveryform"
+                      icon="plus"
+                      label="Tambah"
+                    ></b-menu-item>
+                  </b-menu-item>
+                </b-menu-list>
+                <hr />
+                <b-menu-list>
+                  <b-menu-item
+                  tag="router-link"
+                    to="/login"
+                    pack="uil"
+                    icon="logout"
+                    label="keluar"
+                  ></b-menu-item>
+                </b-menu-list>
+              </b-menu>
+            </div>
+          </b-sidebar>
+        </div>
+      </aside>
 
-    <div class="main">
-      <div class="sticky" style="background-color: #f8f8f8;">
-        <p></p>
-        <div
-          class="level has-background-link"
-          style="padding: 10px 20px; border-radius: 10px"
-        >
-         <p>lalal</p>
+      <div class="tile is-ancestor">
+        <div class="tile is-parent">
+          <article class="tile is-child px-4">
+            <nav
+              class="level box has-background-white p-4 sticky"
+              style="border-radius: 0px 0px 10px 10px; padding: 12px"
+            >
+              <div class="level-left">
+                <div class="level-item">
+                  <b-switch type="is-info" size="is-small" v-model="reduce" />
+
+                  <img
+                    class="is-rounded"
+                    src="../../../../public/images/aaa.png"
+                    width="260"
+                    alt="Placeholder image"
+                  />
+                </div>
+              </div>
+              <div class="level-right">
+                <b-dropdown
+                  position="is-bottom-left"
+                  :triggers="['hover']"
+                  aria-role="list"
+                >
+                  <template #trigger>
+                    <figure class="image is-48x48">
+                      <img
+                        class="is-rounded"
+                        src="../../../../public/images/img_avatar2.png"
+                        width="48"
+                        height="48"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </template>
+
+                  <b-dropdown-item
+                    tag="router-link"
+                    to="/login"
+                    value="logout"
+                    aria-role="listitem"
+                  >
+                    <b-icon icon="logout"></b-icon>
+                    Logout
+                  </b-dropdown-item>
+                </b-dropdown>
+              </div>
+            </nav>
+            <div class="columns" style="padding: 20px 10px">
+              <div class="columns is-multiline">
+                <slot></slot>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-      <br />
-      <header class="is-clearfix">
-        <div class="cats is-pulled-right has-text-right">
-          <small>
-            APR
-            <br />
-            Dashboard
-            <br />
-            <span class="has-text-weight-bold has-text-link">v.0.1</span>
-          </small>
-        </div>
-        <div>
-          <h2
-            style="
-              font-size: 24px;
-              font-weight: 600;
-              padding-bottom: 0.5rem;
-              color: #234bda;
-            "
-          >
-            PELATIHAN
-          </h2>
-          <small>Selamat Datang Kembali di Aplikasi Kami</small>
-        </div>
-        <hr
-          style="
-            height: 1px;
-            border-width: 0;
-            color: grey;
-            background-color: grey;
-          "
-        />
-      </header>
-      <div class="columns">
-        <div class="column is-9">
-          <div class="box" style="border-radius: 10px">
-           
-          </div>
-        </div>
-        <div class="column is-3">
-         
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 </template>
 
-<script src="./apr-base-layout.js"></script>
+<script>
+
+export default {
+  data() {
+    return {
+      reduce: false,
+      activeTab: 0,
+      checkboxGroup: [],
+    };
+  },
+  components: {},
+};
+</script>
+
+<style lang="scss">
+
+.p-1 {
+    padding: 1em;
+  }
+  .sidebar-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+  
+    .sidebar-layout {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    .b-sidebar {
+      .sidebar-content {
+        &.is-mini-mobile {
+          &:not(.is-mini-expand),
+          &.is-mini-expand:not(:hover) {
+            .menu-list {
+              li {
+                a {
+                  span:nth-child(2) {
+                    display: none;
+                  }
+                }
+                ul {
+                  padding-left: 0;
+                  li {
+                    a {
+                      display: inline-block;
+                    }
+                  }
+                }
+              }
+            }
+            .menu-label:not(:last-child) {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .b-sidebar {
+      .sidebar-content {
+        &.is-mini {
+          &:not(.is-mini-expand),
+          &.is-mini-expand:not(:hover) {
+            .menu-list {
+              li {
+                a {
+                  span:nth-child(2) {
+                    display: none;
+                  }
+                }
+                ul {
+                  padding-left: 0;
+                  li {
+                    a {
+                      display: inline-block;
+                    }
+                  }
+                }
+              }
+            }
+            .menu-label:not(:last-child) {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .is-mini-expand {
+    .menu-list a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .sticky {
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+  }
+  
+  .bradius {
+    border-radius: 10px;
+  }
+
+
+  @import "https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css";
+  @import "https://unicons.iconscout.com/release/v2.1.11/css/unicons.css";
+
+</style>

@@ -17,7 +17,6 @@
       :readonly="readonly && !disabled"
       :required="required"
       :name="name"
-      size=""
     ></b-input>
   </b-field>
 </template>

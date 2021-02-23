@@ -3,7 +3,7 @@
     <div class="AccountTypeLayout-header">
       <div class="level">
         <div class="level-left">
-          <h1 class="title is-1">{{ title }}</h1>
+          <h1 class="title is-1">Daftar Produk Simpanan</h1>
         </div>
       </div>
       <nav class="level">

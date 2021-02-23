@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: #f8f8f8;">
+<html lang="en" class="has-background-light">
 
 <head>
   <meta charset="utf-8">
@@ -7,109 +7,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.png">
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.3.45/css/materialdesignicons.min.css">
-
-  <link rel="stylesheet" href="css/main.css">
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
 </head>
-
-<style>
-  /* Scrollbar styles */
-  ::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
-  }
-
-  ::-webkit-scrollbar-track {
-
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #234bda;
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #234bda;
-  }
-
-</style>
 
 <body>
   <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-      Please enable it to continue.</strong>
+        Please enable it to continue.</strong>
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->
 </body>
-<script src="ckeditor.js"></script>
-	<script>ClassicEditor
-			.create( document.querySelector( '.editor' ), {
-				
-				toolbar: {
-					items: [
-						'heading',
-						'|',
-						'bold',
-						'italic',
-						'link',
-						'bulletedList',
-						'numberedList',
-						'|',
-						'indent',
-						'outdent',
-						'|',
-						'imageUpload',
-						'blockQuote',
-						'insertTable',
-						'mediaEmbed',
-						'undo',
-						'redo',
-						'fontColor',
-						'imageInsert',
-						'code',
-						'alignment'
-					]
-				},
-				language: 'id',
-				image: {
-					toolbar: [
-						'imageTextAlternative',
-						'imageStyle:full',
-						'imageStyle:side',
-						'linkImage'
-					]
-				},
-				table: {
-					contentToolbar: [
-						'tableColumn',
-						'tableRow',
-						'mergeTableCells',
-						'tableCellProperties',
-						'tableProperties'
-					]
-				},
-				licenseKey: '',
-				
-			} )
-			.then( editor => {
-				window.editor = editor;
-		
-				
-				
-				
-		
-				
-				
-				
-			} )
-			.catch( error => {
-				console.error( 'Oops, something went wrong!' );
-				console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-				console.warn( 'Build id: rtknfsd0h2fl-r458pwcyoij3' );
-				console.error( error );
-			} );
-	</script>
 
 </html>

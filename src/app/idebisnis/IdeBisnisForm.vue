@@ -245,7 +245,7 @@
               <b-button
                 tag="router-link"
                 icon-left="plus"
-                to="/tambah"
+                to="/idedaftar"
                 type="is-link"
               >
                 SUBMIT
@@ -253,7 +253,7 @@
               <b-button
                 tag="router-link"
                 icon-left="delete"
-                to="/daftar"
+                to="/idedaftar"
                 type="is-danger"
                 outlined
               >
