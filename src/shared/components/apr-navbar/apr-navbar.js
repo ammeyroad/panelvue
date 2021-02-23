@@ -26,6 +26,9 @@ export default {
       handleLogout,
       handleChangePassword,
       navbarLogo,
+      expandOnHover: false,
+      mobile: "reduce",
+      reduce: false
     };
   },
 };

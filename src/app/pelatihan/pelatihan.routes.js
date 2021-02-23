@@ -1,24 +1,24 @@
-import pelatihan from "./pelatihan.vue";
+import { requiresAuth } from "@/shared/routes.meta";
+import pelatihan from "./pelatihan.vue"
 
-import PelatihanForm from "./PelatihanForm.vue"
-import PelatihanDaftar from "./PelatihanDaftar.vue";
 
 const pelatihanRoutes = [
   {
-    path: "/pelatihan", 
+    path: "/pelatihan",
     component: pelatihan,
     children: [
       {
-        path: "/pelatihandaftar",
-        name: "pelatihandaftar",
-        component: PelatihanDaftar,
-         
+        path: "/",
+        name: "pelatihanList",
+        meta: { ...requiresAuth },
+        component: () =>
+          import(
+            /* webpackChunkName: "pelatihanlist-list" */ "./pelatihan-list/pelatihanList.vue"
+          ),
+          
       },
-      {
-        path: "/pelatihanform",
-        name: "pelatihanform",
-        component: PelatihanForm,
-      },
+      
+
     ],
   },
 ];

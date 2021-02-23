@@ -5,13 +5,10 @@
 </template>
 
 <script>
-import AprBaseLayout from "@/shared/layouts/apr-base-layout/AprBaseLayout.vue";
+import AprBaseLayout from "@/shared/layouts/apr-base-layout/AprBaseLayout";
 
 export default {
-  name: "Bank",
-  components: {
-    AprBaseLayout,
-  },
+  name: "pelatihanlist",
+  components: { AprBaseLayout },
 };
-
 </script>

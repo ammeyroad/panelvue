@@ -1,45 +1,61 @@
 <template>
   <div class="BankLayout">
-    <div class="BankLayout-header">
-      <nav class="level">
-        <div class="level">
-          <div class="level-left">
-            <h1 class="title is-1">Daftar Bank</h1>
-          </div>
-        </div>
-
-        <div class="level-right">
-          <div class="level-item">
-            <AprTextField
-              v-model="search"
-              :id="'TxtSearchBankName'"
-              placeholder="Cari nama bank..."
-            ></AprTextField>
-          </div>
-          <div class="level-item">
-            <button @click="handleSearchData" class="button">Cari</button>
-          </div>
-          <div v-if="canCreateBank" class="level-item">
-            <router-link class="button is-info" :to="{ name: 'BankCreate' }">
-              Tambah Data
-            </router-link>
-          </div>
-        </div>
-      </nav>
+    <div class="is-clearfix">
+      <div class="cats is-pulled-right has-text-right">
+        <small>
+          <br />
+          <span class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+              <li><a href="#">Bulma</a></li>
+              <li><a href="#">Components</a></li>
+              <li class="is-active">
+                <a href="#" aria-current="page">Breadcrumb</a>
+              </li>
+            </ul>
+          </span>
+        </small>
+      </div>
+      <div>
+        <h2>Daftar Bank</h2>
+        <small>Deskripsi Singkat Halamananya</small>
+      </div>
+      <hr />
     </div>
 
-    <div class="BankLayout-body">
-      <b-table :loading="isBusy" :data="tableData">
+    <div
+      class="card"
+      style="
+        border-radius: 15px;
+        border: 0px;
+        border-color: blue;
+        padding: 5px;
+      "
+    >
+      <div class="tile is-child box has-background-link">
+        <b-field position="is-right">
+          <b-input
+            v-model="search"
+            :id="'TxtSearchBankName'"
+            placeholder="Cari nama bank..."
+            icon="magnify"
+          ></b-input>
+          <p class="control">
+            <b-button @click="handleSearchData" label="CARI" type="is-info" />
+          </p>
+        </b-field>
+      </div>
+
+      <b-table
+        :loading="isBusy"
+        :data="tableData"
+        table
+        is-hoverable
+        class="m-2"
+        style="padding: 30px"
+      >
         <b-table-column field="logo_url" label="Logo" v-slot="{ row }">
-          <figure class="image center-logo is-128x128">
-            <img
-              v-if="row.logo_url"
-              :src="row.logo_url"
-              :alt="row.name"
-              class="is-rounded"
-              width="128"
-              height="128"
-            />
+          <figure class="image is-128x128">
+            <img v-if="row.logo_url" :src="row.logo_url" :alt="row.name" />
             <img
               v-else
               :alt="row.name"
@@ -57,85 +73,64 @@
           {{ row.description }}
         </b-table-column>
 
-        <b-table-column
-          field="branches_count"
-          label="Jumlah Cabang"
-          v-slot="{ row }"
-        >
+        <b-table-column field="branches_count" label="Cabang" v-slot="{ row }">
           {{ row.branches_count }}
         </b-table-column>
 
         <b-table-column
           field="whatsapp_no"
-          label="No. WhatsApp"
+          label="WhatsApp"
+          icon="pencil"
           v-slot="{ row }"
         >
           {{ row.whatsapp_no }}
         </b-table-column>
 
-        <b-table-column
-          field="updated_at"
-          label="Perubahan Terakhir"
-          v-slot="{ row }"
-        >
+        <b-table-column field="updated_at" label="Perubahan" v-slot="{ row }">
           {{ dateTimeLabel(row.updated_at) }}
         </b-table-column>
 
         <b-table-column field="actions" label="Aksi" v-slot="{ row }">
-          <b-dropdown position="is-bottom-left" aria-role="list">
-            <button
-              class="button is-primary"
-              slot="trigger"
-              slot-scope="{ active }"
+          <router-link
+            :to="{
+              name: 'BankDetails',
+              params: { id: row.id },
+            }"
+          >
+            <div class="button is-link">
+              <b-icon class="media-left" icon="view-list"></b-icon>
+            </div>
+          </router-link>
+          <div v-if="canEditBank(row)" has-link>
+            <router-link
+              :to="{
+                name: 'BankEdit',
+                params: { id: row.id },
+              }"
             >
-              <span>Aksi</span>
-              <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
-            </button>
-
-            <b-dropdown-item has-link>
-              <router-link
-                :to="{
-                  name: 'BankDetails',
-                  params: { id: row.id },
-                }"
-              >
-                <div class="media">
-                  <b-icon class="media-left" icon="view-list"></b-icon>
-                  <div class="media-content">Detail</div>
-                </div>
-              </router-link>
-            </b-dropdown-item>
-            <b-dropdown-item v-if="canEditBank(row)" has-link>
-              <router-link
-                :to="{
-                  name: 'BankEdit',
-                  params: { id: row.id },
-                }"
-              >
-                <div class="media">
-                  <b-icon class="media-left" icon="pencil"></b-icon>
-                  <div class="media-content">Ubah</div>
-                </div>
-              </router-link>
-            </b-dropdown-item>
-          </b-dropdown>
+              <div class="button is-warning">
+                <b-icon class="media-left" icon="pencil"></b-icon>
+              </div>
+            </router-link>
+          </div>
         </b-table-column>
 
         <template #empty>
           <span>Tidak ada data!</span>
         </template>
       </b-table>
-    </div>
 
-    <div class="Body-footer">
-      <AprPagination
-        :meta="meta"
-        @next="handlePageChanged($event)"
-        @previous="handlePageChanged($event)"
-      />
+      <div class="tile is-child box transparent">
+        <AprPagination
+          :meta="meta"
+          @next="handlePageChanged($event)"
+          @previous="handlePageChanged($event)"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script src="./bank-list.js"></script>
-<style lang="scss" scoped src="./bank-list.scss"></style>
+
+<style lang="scss" scoped src="C:\Users\Admin\Desktop\APR\DEKSTOP\fase satu\apr-frontend-master\src\shared\layouts\apr-base-layout\mainbase.scss"></style>

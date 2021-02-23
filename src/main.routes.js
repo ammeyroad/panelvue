@@ -12,9 +12,9 @@ import loanApplicationRoutes from "@/app/loan-application/loan-application.route
 import loginRoutes from "@/app/login/login.routes";
 import usersRoutes from "@/app/users/users.routes";
 import notFoundRoutes from "@/app/not-found/not-found.routes";
-import idebisnisRoutes from "@/app/idebisnis/idebisnis.routes";
 import pelatihanRoutes from "@/app/pelatihan/pelatihan.routes";
-import discoveryRoutes from "@/app/discovery/discovery.routes";
+
+
 
 import store from "@/store";
 
@@ -28,11 +28,8 @@ const routes = [
   ...loanApplicationRoutes,
   ...loginRoutes,
   ...usersRoutes,
-  ...idebisnisRoutes,
   ...notFoundRoutes,
   ...pelatihanRoutes,
-  ...discoveryRoutes,
-
 ];
 
 const router = new VueRouter({

@@ -1,10 +1,6 @@
 <template>
-  <AprPlainLayout>
-    <section class="hero is-fullheight" style="
-      background-image: url('https://i.ibb.co/8s2wx1K/login-background.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-    ">
+  <AprPlainLayout :background-image="backgroundImage">
+    <section class="hero is-fullheight" style="border-radius: 20px;">
       <div class="hero-body " >
         <div class="container" >
           <div class="card pl-4 pb-4" style="background-color:  rgba(255, 255, 255, 0.87); border-radius: 14px; border-left-style: solid;
@@ -16,7 +12,7 @@
                  <div class="column is-12">
                    <figure>
                   <img
-                    src="../../../public/images/logo.png"
+                    src="http://localhost:8080/images/logo.png"
                     width="306"
                    
                     alt=""
