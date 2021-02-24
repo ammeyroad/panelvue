@@ -9,7 +9,7 @@
           <div>
             <p style="padding: 10px 14px">
               <img
-                src="https://adminaprtest.netlify.app/img/aprlogoputih.7b9965b4.png"
+                src="../../../../public/images/aprlogoputih.png"
                 width="150px"
                 alt=""
               />
@@ -30,12 +30,14 @@
                 type="is-info"
                 icon-left="view-dashboard"
               />
-              <b-button label="Discover" type="is-info" icon-left="book" />
+              <b-button  tag="router-link"
+                to="/discoverydaftar" label="Discover" type="is-info" icon-left="book" />
             </div>
           </div><hr style="height:1px;border-width:0;color:gray;background-color:#234dba">
           <div class="buttons">
            
-            <b-button label="Keluar" type="is-info" icon-left="logout" />
+            <b-button  tag="router-link"
+                to="/login" label="Keluar" type="is-info" icon-left="logout" />
           </div>
        
       </div>
