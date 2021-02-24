@@ -17,12 +17,20 @@
           icon-left="plus"
           to="/pelatihanform"
           type="is-link"
+           size="is-medium"
         >
           Tambah Pelatihan
         </b-button>
       </div>
     </div>
-
+     <hr
+      style="
+        height: 1px;
+        border-width: 0;
+        color: gray;
+        background-color: #234dba;
+      "
+    />
     <div class="columns">
       <div class="column mr-4">
         <b-tabs
@@ -39,6 +47,14 @@
                 <b-checkbox v-model="searchable" native-value="true">
                   Cari
                 </b-checkbox>
+                <b-button
+                  tag="router-link"
+                  icon-left="plus"
+                  to="/pelatihanform"
+                  type="is-link"
+                >
+                  Pelatihan
+                </b-button>
               </div>
             </div>
             <b-table

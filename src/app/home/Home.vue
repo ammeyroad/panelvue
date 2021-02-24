@@ -41,9 +41,16 @@
         </div>
       </div>
     </div>
-    <hr />
+   
     <div class="container is-fluid">
-      <br />
+      <hr
+      style="
+        height: 1px;
+        border-width: 0;
+        color: gray;
+        background-color: #234dba;
+      "
+    />
       <div class="columns">
         <div class="column is-full">
           <div class="box">

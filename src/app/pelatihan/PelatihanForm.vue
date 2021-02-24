@@ -16,6 +16,7 @@
           tag="router-link"
           icon-left="arrow-left"
           to="/pelatihandaftar"
+          size="is-medium"
           type="is-link"
           outlined
         >
@@ -23,7 +24,14 @@
         </b-button>
       </div>
     </div>
-
+<hr
+      style="
+        height: 1px;
+        border-width: 0;
+        color: gray;
+        background-color: #234dba;
+      "
+    />
     <div class="columns">
       <div class="column mr-4">
         <div class="box is-shadowless " style="border-radius: 10px">
